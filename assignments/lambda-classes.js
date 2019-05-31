@@ -2,9 +2,9 @@
 
 class Person {
     constructor(attributes) {
-        name = attributes.name; 
-        age = attributes.age;
-        location = attributes.location; 
+        this.name = attributes.name; 
+        this.age = attributes.age;
+        this.location = attributes.location; 
     }
 
     speak() {
@@ -41,7 +41,7 @@ class Student extends Person {
     }
 
     listsSubjects() {
-       return `${this.favSubjects}`
+       return `${this.favSubjects}`;
     }
 
     PRAssignments() {
@@ -53,3 +53,30 @@ class Student extends Person {
     }
 
 }
+
+class ProjectManager extends Person {
+    constructor(attributes) {
+        super(attributes);
+        this.gradClassName = attributes.gradClassName;
+        this.favInstructor = attributes.favInstructor;
+    }
+
+    standUp(channel) {
+        return `${this.name} announces to ${channel}, @channel standby times!`;
+    }
+    debugsCode() {
+        return `${this.name} debugs ${this.studentname} code on ${this.subject}.`;
+    }
+}
+
+const Jashele = new Student ({
+    name: 'Jashele', 
+    age: 100, 
+    location: 'Earth',
+    previousbackground: 'Panda',
+    className: 'Web PT 7',
+    favSubjects: ['User Interface']
+})
+
+console.log(Jashele);
+

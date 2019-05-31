@@ -159,7 +159,7 @@ Prototype Refactor
         team: 'Mage Guild',
         weapons: ['Staff of Shamalama',],
         language: 'Common Tongue',
-      })
+      });
 
    
   
@@ -171,7 +171,7 @@ Prototype Refactor
       team: 'The Round Table',
       weapons: ['Giant Sword', 'Shield',],
       language: 'Common Tongue',
-    })
+    });
 
   
     const archer = new Humanoid({
@@ -183,7 +183,7 @@ Prototype Refactor
       weapons: ['Bow', 'Dagger', ],
       language: 'Elvish',
     });
-    
+
   
     console.log(mage.createdAt); // Today's date
     console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
