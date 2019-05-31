@@ -94,36 +94,46 @@ Prototype Refactor
   
     // === Humanoid (Having an appearance or character resembling that of a human.) ===
   
-    function Humanoid(HumanoidAttr) {
-    CharacterStats.call(this, HumanoidAttr);
-    this.team = HumanoidAttr.team;
+    // function Humanoid(HumanoidAttr) {
+    // CharacterStats.call(this, HumanoidAttr);
+    // this.team = HumanoidAttr.team;
   
-    this.weapons =  HumanoidAttr.weapons;
+    // this.weapons =  HumanoidAttr.weapons;
   
-    this.language = HumanoidAttr.language;
+    // this.language = HumanoidAttr.language;
   
-    };
-  
-  
-  
-    Humanoid.prototype = Object.create(CharacterStats.prototype);
-    // should inherit takeDamage() from CharacterStats
-  
-  
-  
-    Humanoid.prototype.greet = function() {
-      return `${this.name} offers a greeting in ${this.language}.` 
-      // prototype method -> returns the string '<object name> offers a greeting in <object language>.'
+    // };
+
+
+
+    // Humanoid Refactored:
+
+    class Humanoid extends GameObj {
+        constructor(HumanoidAttr) {
+            super(GameObj);
+            this.team = HumanoidAttr.team;
+            this.weapons = HumanoidAttr.weapons;
+            this.language = HumanoidAttr.language;
+        }
     
   
+    // Humanoid.prototype = Object.create(CharacterStats.prototype);
+    // // should inherit takeDamage() from CharacterStats
+
+
+    // Humanoid.prototype.greet = function() {
+    //   return `${this.name} offers a greeting in ${this.language}.` 
+    //   // prototype method -> returns the string '<object name> offers a greeting in <object language>.'
+    // }
+
+    // Humanoid Prototype Refactor:
+
+    greet(){
+        return `${this.name} offers a greeting in ${this.language}.` 
     }
+}
   
-    
-    
-  
-  
-  
-  
+ 
   
   /*
     * Inheritance chain: GameObject -> CharacterStats -> Humanoid
