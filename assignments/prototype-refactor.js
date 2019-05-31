@@ -36,7 +36,7 @@ Prototype Refactor
     // };
 
 
-    // Object Refactored:
+    // GameObject Object Refactored:
 
     class GameObject {
         constructor(GameObj){
@@ -56,36 +56,36 @@ Prototype Refactor
 }
   
   
-  
-  
-  
-  
    // === CharacterStats ===
+//    function CharacterStats(charAttrs) {
+//     GameObject.call(this, charAttrs);
+//     this.healthPoints = charAttrs.healthPoints;
+//   };
+
+
+  // CharacterStats Refactored: 
+
+  class CharacterStats extends GameObject {
+      constructor(charAttrs){
+          super(GameObj);
+            this.healthPoints = charAttrs.healthPoints;
+      }
   
   
-   function CharacterStats(charAttrs) {
-    GameObject.call(this, charAttrs);
-    this.healthPoints = charAttrs.healthPoints;
-  };
+//   CharacterStats.prototype = Object.create(GameObject.prototype);
   
-  CharacterStats.prototype = Object.create(GameObject.prototype);
-  
-  CharacterStats.prototype.takeDamage = function () {
+//   CharacterStats.prototype.takeDamage = function () {
+//     return `${this.name} took damage`;
+//   }
+
+
+
+// CharacterStats Prototype Refactored:
+
+  takeDamage(){
     return `${this.name} took damage`;
   }
-  
-  //  function CharacterStats(CharStats) {
-  //   CharacterStats.prototype = Object.create(GameObject.prototype); 
-  //   this.healthPoints = CharStats.healthPoints;
-  
-    
-  
-  //   // should inherit destroy() from GameObject's prototype
-  //   };
-  
-  //   CharacterStats.prototype.takeDamage = function() {
-  //     return `${this.name} took damage.`; // prototype method -> returns the string '<object name> took damage.'
-  //   } 
+}
   
   
   
