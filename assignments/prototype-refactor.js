@@ -29,6 +29,7 @@ Prototype Refactor
   
 
 // === GameObject ===
+
     // function GameObject(GameObj) {
     //     this.createdAt =  GameObj.createdAt;
     //     this.name = GameObj.name;
@@ -45,32 +46,41 @@ Prototype Refactor
             this.dimensions = GameObj.dimensions;
         }
     
+
+
 //     GameObject.prototype.destroy = function() {
 //       return `${this.name} was removed from the game.`; // prototype method that returns: `${this.name} was removed from the game.`
 //   }
+
+
 
     //   Prototype Refactored: 
     destroy() {
       return `${this.name} was removed from the game.`;
   }
 }
+
+
   
   
    // === CharacterStats ===
+
 //    function CharacterStats(charAttrs) {
-//     GameObject.call(this, charAttrs);
-//     this.healthPoints = charAttrs.healthPoints;
+//         GameObject.call(this, charAttrs);
+//         this.healthPoints = charAttrs.healthPoints;
 //   };
+
 
 
   // CharacterStats Refactored: 
 
   class CharacterStats extends GameObject {
       constructor(charAttrs){
-          super(GameObj);
+          super(charAttrs);
             this.healthPoints = charAttrs.healthPoints;
       }
   
+
   
 //   CharacterStats.prototype = Object.create(GameObject.prototype);
   
@@ -91,26 +101,22 @@ Prototype Refactor
   
   
   
-  
     // === Humanoid (Having an appearance or character resembling that of a human.) ===
   
     // function Humanoid(HumanoidAttr) {
-    // CharacterStats.call(this, HumanoidAttr);
-    // this.team = HumanoidAttr.team;
-  
-    // this.weapons =  HumanoidAttr.weapons;
-  
-    // this.language = HumanoidAttr.language;
-  
+    //     CharacterStats.call(this, HumanoidAttr);
+    //         this.team = HumanoidAttr.team;
+    //         this.weapons =  HumanoidAttr.weapons;
+    //         this.language = HumanoidAttr.language;
     // };
 
 
 
     // Humanoid Refactored:
 
-    class Humanoid extends GameObj {
+    class Humanoid extends CharacterStats {
         constructor(HumanoidAttr) {
-            super(GameObj);
+            super(HumanoidAttr);
             this.team = HumanoidAttr.team;
             this.weapons = HumanoidAttr.weapons;
             this.language = HumanoidAttr.language;
@@ -118,7 +124,7 @@ Prototype Refactor
     
   
     // Humanoid.prototype = Object.create(CharacterStats.prototype);
-    // // should inherit takeDamage() from CharacterStats
+    // should inherit takeDamage() from CharacterStats
 
 
     // Humanoid.prototype.greet = function() {
@@ -143,56 +149,41 @@ Prototype Refactor
   
   // Test you work by un-commenting these 3 objects and the list of console logs below:
   
-  
+
+
     const mage = new Humanoid({
-      createdAt: new Date(),
-      dimensions: {
-        length: 2,
-        width: 1,
-        height: 1,
-      },
-      healthPoints: 5,
-      name: 'Bruce',
-      team: 'Mage Guild',
-      weapons: [
-        'Staff of Shamalama',
-      ],
-      language: 'Common Tongue',
-    });
+        createdAt: new Date(),
+        dimensions: {length: 2, width: 1, height: 1, },
+        healthPoints: 5,
+        name: 'Bruce',
+        team: 'Mage Guild',
+        weapons: ['Staff of Shamalama',],
+        language: 'Common Tongue',
+      })
+
+   
   
     const swordsman = new Humanoid({
       createdAt: new Date(),
-      dimensions: {
-        length: 2,
-        width: 2,
-        height: 2,
-      },
+      dimensions: {length: 2, width: 2, height: 2, },
       healthPoints: 15,
       name: 'Sir Mustachio',
       team: 'The Round Table',
-      weapons: [
-        'Giant Sword',
-        'Shield',
-      ],
+      weapons: ['Giant Sword', 'Shield',],
       language: 'Common Tongue',
-    });
+    })
+
   
     const archer = new Humanoid({
       createdAt: new Date(),
-      dimensions: {
-        length: 1,
-        width: 2,
-        height: 4,
-      },
+      dimensions: {length: 1, width: 2, height: 4, },
       healthPoints: 10,
       name: 'Lilith',
       team: 'Forest Kingdom',
-      weapons: [
-        'Bow',
-        'Dagger',
-      ],
+      weapons: ['Bow', 'Dagger', ],
       language: 'Elvish',
     });
+    
   
     console.log(mage.createdAt); // Today's date
     console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
